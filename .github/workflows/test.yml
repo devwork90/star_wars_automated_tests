@@ -28,9 +28,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pytest-html
 
-      - name: Run UI Tests
-        run: xvfb-run pytest test_cases/frontend/
+      - name: Run UI Tests and Generate HTML Report
+        run: xvfb-run pytest test_cases/frontend/ --html=reports/ui_test_report.html --self-contained-html
+
+      - name: Upload UI Test Report Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ui-test-report
+          path: reports/ui_test_report.html
 
   backend-api-tests:
     name: API Tests
@@ -48,6 +55,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pytest-html
 
-      - name: Run API Tests
-        run: pytest test_cases/backend/
+      - name: Run API Tests and Generate HTML Report
+        run: pytest test_cases/backend/ --html=reports/api_test_report.html --self-contained-html
+
+      - name: Upload API Test Report Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-test-report
+          path: reports/api_test_report.html

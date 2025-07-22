@@ -1,9 +1,13 @@
 from base_pages.landing_page import LandingPage
 from base_pages.movie_details_page import MovieDetailsPage
 from base_pages.select_movie_page import SelectedMoviePage
+from utilities.custome_logger import Log_Maker
+
+logger = Log_Maker.log_gen()
 
 
 def test_landing_page(driver):
+    logger.info("====================Test_01_landing_page==========")
     """
     test function for landing page
     """
@@ -13,12 +17,14 @@ def test_landing_page(driver):
 
 
 def test_landing_title(driver):
+    logger.info("====================Test_02_landing_page_title=====")
     landing = LandingPage(driver)
     landing.go_to_landing_page()
     # assert landing.get_title() == "localhost:3000"
 
 
 def test_value_in_last_table_row(driver):
+    logger.info("====================Test_03_Table filtering=========")
     landing = LandingPage(driver)
     landing.go_to_landing_page()
     landing.filter_by_by_title()
@@ -32,6 +38,7 @@ def test_value_in_last_table_row(driver):
 
 
 def test_movie_search_and_selection(driver):
+    logger.info("====================Test_04_Movie Selection=========")
     # "The Empire Strikes Back"
     landing = LandingPage(driver)
     landing.go_to_landing_page()
@@ -41,6 +48,7 @@ def test_movie_search_and_selection(driver):
 
 
 def test_the_empire_strike_back_have_wookie(driver):
+    logger.info("====================Test_05 Item verification=========")
     landing = LandingPage(driver)
     landing.go_to_landing_page()
     selected = SelectedMoviePage(driver)
@@ -53,6 +61,7 @@ def test_the_empire_strike_back_have_wookie(driver):
 
 
 def test_the_phantom_menance_planets_does_not_have_camino(driver):
+    logger.info("====================Test_06 Item verification=========")
     landing = LandingPage(driver)
     landing.go_to_landing_page()
     selected = SelectedMoviePage(driver)
