@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+*.log
+*.db
+.env
+.venv/
+testvenv/
+
+# VSCode/PyCharm
+.idea/
+.vscode/
+
+# Selenium test artifacts
+screenshots/
+logs/
+reports/
+
+# GitHub Actions cache
+.github/workflows/*.log
