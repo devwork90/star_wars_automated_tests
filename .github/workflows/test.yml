@@ -34,7 +34,7 @@ jobs:
         run: xvfb-run pytest test_cases/frontend/ --html=reports/ui_test_report.html --self-contained-html
 
       - name: Upload UI Test Report Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ui-test-report
           path: reports/ui_test_report.html
@@ -61,7 +61,7 @@ jobs:
         run: pytest test_cases/backend/ --html=reports/api_test_report.html --self-contained-html
 
       - name: Upload API Test Report Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: api-test-report
           path: reports/api_test_report.html
